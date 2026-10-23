@@ -1,0 +1,113 @@
+sample_id,donor,truth,donor_holdout_prediction,sample_split_prediction,baseline
+DZQV_CD8_naive,DZQV,Naive CD8 T cells,Naive CD8 T cells,Naive CD8 T cells,Central memory CD8 T cell
+DZQV_CD8_CM,DZQV,Central memory CD8 T cell,Central memory CD8 T cell,Central memory CD8 T cell,Central memory CD8 T cell
+DZQV_CD8_EM,DZQV,Effector memory CD8 T cells,Effector memory CD8 T cells,Terminal effector CD8 T cells,Central memory CD8 T cell
+DZQV_CD8_TE,DZQV,Terminal effector CD8 T cells,Terminal effector CD8 T cells,Terminal effector CD8 T cells,Central memory CD8 T cell
+DZQV_MAIT,DZQV,MAIT cells,MAIT cells,MAIT cells,Central memory CD8 T cell
+DZQV_VD2+,DZQV,Vd2 gd T cells,Vd2 gd T cells,Vd2 gd T cells,Central memory CD8 T cell
+DZQV_VD2-,DZQV,Non-Vd2 gd T cells,Non-Vd2 gd T cells,Non-Vd2 gd T cells,Central memory CD8 T cell
+DZQV_TFH,DZQV,Follicular helper T cells,Follicular helper T cells,T regulatory cells,Central memory CD8 T cell
+DZQV_Treg,DZQV,T regulatory cells,T regulatory cells,T regulatory cells,Central memory CD8 T cell
+DZQV_Th1,DZQV,Th1 cells,Naive CD4 T cells,Naive CD4 T cells,Central memory CD8 T cell
+DZQV_Th1/Th17,DZQV,Th1/Th17 cells,Th1/Th17 cells,Th1/Th17 cells,Central memory CD8 T cell
+DZQV_Th17,DZQV,Th17 cells,Th1/Th17 cells,Th1/Th17 cells,Central memory CD8 T cell
+DZQV_Th2,DZQV,Th2 cells,Th2 cells,Naive CD8 T cells,Central memory CD8 T cell
+DZQV_CD4_naive,DZQV,Naive CD4 T cells,Naive CD4 T cells,Naive CD4 T cells,Central memory CD8 T cell
+DZQV_Progenitor,DZQV,Progenitor cells,Progenitor cells,Progenitor cells,Central memory CD8 T cell
+DZQV_B_naive,DZQV,Naive B cells,Naive B cells,Naive B cells,Central memory CD8 T cell
+DZQV_B_NSM,DZQV,Non-switched memory B cells,Non-switched memory B cells,Switched memory B cells,Central memory CD8 T cell
+DZQV_B_Ex,DZQV,Exhausted B cells,Exhausted B cells,Non-switched memory B cells,Central memory CD8 T cell
+DZQV_B_SM,DZQV,Switched memory B cells,Switched memory B cells,Switched memory B cells,Central memory CD8 T cell
+DZQV_Plasmablasts,DZQV,Plasmablasts,Plasmablasts,Plasmablasts,Central memory CD8 T cell
+DZQV_C_mono,DZQV,Classical monocytes,Classical monocytes,Classical monocytes,Central memory CD8 T cell
+DZQV_I_mono,DZQV,Intermediate monocytes,Intermediate monocytes,Classical monocytes,Central memory CD8 T cell
+DZQV_NC_mono,DZQV,Non classical monocytes,Non classical monocytes,Intermediate monocytes,Central memory CD8 T cell
+DZQV_NK,DZQV,Natural killer cells,Natural killer cells,Non-Vd2 gd T cells,Central memory CD8 T cell
+DZQV_pDC,DZQV,Plasmacytoid dendritic cells,Plasmacytoid dendritic cells,Plasmacytoid dendritic cells,Central memory CD8 T cell
+DZQV_mDC,DZQV,Myeloid dendritic cells,Myeloid dendritic cells,Myeloid dendritic cells,Central memory CD8 T cell
+DZQV_Neutrophils,DZQV,Low-density neutrophils,Low-density neutrophils,Low-density neutrophils,Central memory CD8 T cell
+DZQV_Basophils,DZQV,Low-density basophils,Low-density basophils,Low-density basophils,Central memory CD8 T cell
+925L_CD8_naive,925L,Naive CD8 T cells,Naive CD8 T cells,Naive CD8 T cells,Central memory CD8 T cell
+925L_CD8_CM,925L,Central memory CD8 T cell,Central memory CD8 T cell,Central memory CD8 T cell,Central memory CD8 T cell
+925L_CD8_EM,925L,Effector memory CD8 T cells,Effector memory CD8 T cells,Effector memory CD8 T cells,Central memory CD8 T cell
+925L_CD8_TE,925L,Terminal effector CD8 T cells,Terminal effector CD8 T cells,Terminal effector CD8 T cells,Central memory CD8 T cell
+925L_MAIT,925L,MAIT cells,MAIT cells,MAIT cells,Central memory CD8 T cell
+925L_VD2+,925L,Vd2 gd T cells,Vd2 gd T cells,Non-Vd2 gd T cells,Central memory CD8 T cell
+925L_VD2-,925L,Non-Vd2 gd T cells,Non-Vd2 gd T cells,Vd2 gd T cells,Central memory CD8 T cell
+925L_TFH,925L,Follicular helper T cells,Follicular helper T cells,T regulatory cells,Central memory CD8 T cell
+925L_Treg,925L,T regulatory cells,T regulatory cells,T regulatory cells,Central memory CD8 T cell
+925L_Th1,925L,Th1 cells,Th1/Th17 cells,Th1/Th17 cells,Central memory CD8 T cell
+925L_Th1/Th17,925L,Th1/Th17 cells,Th17 cells,Th17 cells,Central memory CD8 T cell
+925L_Th17,925L,Th17 cells,Th17 cells,Th17 cells,Central memory CD8 T cell
+925L_Th2,925L,Th2 cells,Th2 cells,Follicular helper T cells,Central memory CD8 T cell
+925L_CD4_naive,925L,Naive CD4 T cells,Naive CD4 T cells,Naive CD4 T cells,Central memory CD8 T cell
+925L_Progenitor,925L,Progenitor cells,Progenitor cells,Progenitor cells,Central memory CD8 T cell
+925L_B_naive,925L,Naive B cells,Naive B cells,Naive B cells,Central memory CD8 T cell
+925L_B_NSM,925L,Non-switched memory B cells,Non-switched memory B cells,Non-switched memory B cells,Central memory CD8 T cell
+925L_B_Ex,925L,Exhausted B cells,Exhausted B cells,Exhausted B cells,Central memory CD8 T cell
+925L_B_SM,925L,Switched memory B cells,Switched memory B cells,Switched memory B cells,Central memory CD8 T cell
+925L_Plasmablasts,925L,Plasmablasts,Plasmablasts,Plasmablasts,Central memory CD8 T cell
+925L_C_mono,925L,Classical monocytes,Classical monocytes,Classical monocytes,Central memory CD8 T cell
+925L_I_mono,925L,Intermediate monocytes,Intermediate monocytes,Intermediate monocytes,Central memory CD8 T cell
+925L_NC_mono,925L,Non classical monocytes,Non classical monocytes,Non classical monocytes,Central memory CD8 T cell
+925L_NK,925L,Natural killer cells,Natural killer cells,Non-Vd2 gd T cells,Central memory CD8 T cell
+925L_pDC,925L,Plasmacytoid dendritic cells,Plasmacytoid dendritic cells,Plasmacytoid dendritic cells,Central memory CD8 T cell
+925L_mDC,925L,Myeloid dendritic cells,Myeloid dendritic cells,Classical monocytes,Central memory CD8 T cell
+925L_Neutrophils,925L,Low-density neutrophils,Low-density neutrophils,Low-density neutrophils,Central memory CD8 T cell
+925L_Basophils,925L,Low-density basophils,Low-density basophils,Low-density basophils,Central memory CD8 T cell
+9JD4_CD8_naive,9JD4,Naive CD8 T cells,Naive CD8 T cells,Naive CD4 T cells,Central memory CD8 T cell
+9JD4_CD8_CM,9JD4,Central memory CD8 T cell,Central memory CD8 T cell,Central memory CD8 T cell,Central memory CD8 T cell
+9JD4_CD8_EM,9JD4,Effector memory CD8 T cells,Effector memory CD8 T cells,Terminal effector CD8 T cells,Central memory CD8 T cell
+9JD4_CD8_TE,9JD4,Terminal effector CD8 T cells,Terminal effector CD8 T cells,Effector memory CD8 T cells,Central memory CD8 T cell
+9JD4_MAIT,9JD4,MAIT cells,MAIT cells,MAIT cells,Central memory CD8 T cell
+9JD4_VD2+,9JD4,Vd2 gd T cells,Vd2 gd T cells,Vd2 gd T cells,Central memory CD8 T cell
+9JD4_VD2-,9JD4,Non-Vd2 gd T cells,Non-Vd2 gd T cells,Non-Vd2 gd T cells,Central memory CD8 T cell
+9JD4_TFH,9JD4,Follicular helper T cells,Follicular helper T cells,Follicular helper T cells,Central memory CD8 T cell
+9JD4_Treg,9JD4,T regulatory cells,T regulatory cells,T regulatory cells,Central memory CD8 T cell
+9JD4_Th1,9JD4,Th1 cells,Th17 cells,Th1 cells,Central memory CD8 T cell
+9JD4_Th1/Th17,9JD4,Th1/Th17 cells,Th1/Th17 cells,Th17 cells,Central memory CD8 T cell
+9JD4_Th17,9JD4,Th17 cells,Th1/Th17 cells,Th1/Th17 cells,Central memory CD8 T cell
+9JD4_Th2,9JD4,Th2 cells,Th2 cells,Th2 cells,Central memory CD8 T cell
+9JD4_CD4_naive,9JD4,Naive CD4 T cells,Naive CD4 T cells,Naive CD4 T cells,Central memory CD8 T cell
+9JD4_Progenitor,9JD4,Progenitor cells,Progenitor cells,Progenitor cells,Central memory CD8 T cell
+9JD4_B_naive,9JD4,Naive B cells,Naive B cells,Non-switched memory B cells,Central memory CD8 T cell
+9JD4_B_NSM,9JD4,Non-switched memory B cells,Naive B cells,Non-switched memory B cells,Central memory CD8 T cell
+9JD4_B_Ex,9JD4,Exhausted B cells,Exhausted B cells,Exhausted B cells,Central memory CD8 T cell
+9JD4_B_SM,9JD4,Switched memory B cells,Switched memory B cells,Switched memory B cells,Central memory CD8 T cell
+9JD4_Plasmablasts,9JD4,Plasmablasts,Plasmablasts,Plasmablasts,Central memory CD8 T cell
+9JD4_C_mono,9JD4,Classical monocytes,Classical monocytes,Classical monocytes,Central memory CD8 T cell
+9JD4_I_mono,9JD4,Intermediate monocytes,Intermediate monocytes,Non classical monocytes,Central memory CD8 T cell
+9JD4_NC_mono,9JD4,Non classical monocytes,Non classical monocytes,Intermediate monocytes,Central memory CD8 T cell
+9JD4_NK,9JD4,Natural killer cells,Natural killer cells,Natural killer cells,Central memory CD8 T cell
+9JD4_pDC,9JD4,Plasmacytoid dendritic cells,Plasmacytoid dendritic cells,Plasmacytoid dendritic cells,Central memory CD8 T cell
+9JD4_mDC,9JD4,Myeloid dendritic cells,Myeloid dendritic cells,Myeloid dendritic cells,Central memory CD8 T cell
+9JD4_Neutrophils,9JD4,Low-density neutrophils,Low-density neutrophils,Low-density neutrophils,Central memory CD8 T cell
+9JD4_Basophils,9JD4,Low-density basophils,Low-density basophils,Low-density basophils,Central memory CD8 T cell
+G4YW_CD8_naive,G4YW,Naive CD8 T cells,Naive CD8 T cells,Naive CD4 T cells,Central memory CD8 T cell
+G4YW_CD8_CM,G4YW,Central memory CD8 T cell,Central memory CD8 T cell,Central memory CD8 T cell,Central memory CD8 T cell
+G4YW_CD8_EM,G4YW,Effector memory CD8 T cells,Effector memory CD8 T cells,Effector memory CD8 T cells,Central memory CD8 T cell
+G4YW_CD8_TE,G4YW,Terminal effector CD8 T cells,Terminal effector CD8 T cells,Terminal effector CD8 T cells,Central memory CD8 T cell
+G4YW_MAIT,G4YW,MAIT cells,MAIT cells,MAIT cells,Central memory CD8 T cell
+G4YW_VD2+,G4YW,Vd2 gd T cells,Vd2 gd T cells,Vd2 gd T cells,Central memory CD8 T cell
+G4YW_VD2-,G4YW,Non-Vd2 gd T cells,Non-Vd2 gd T cells,Vd2 gd T cells,Central memory CD8 T cell
+G4YW_TFH,G4YW,Follicular helper T cells,Follicular helper T cells,Follicular helper T cells,Central memory CD8 T cell
+G4YW_Treg,G4YW,T regulatory cells,T regulatory cells,T regulatory cells,Central memory CD8 T cell
+G4YW_Th1,G4YW,Th1 cells,Th1 cells,T regulatory cells,Central memory CD8 T cell
+G4YW_Th1/Th17,G4YW,Th1/Th17 cells,Th1/Th17 cells,Th17 cells,Central memory CD8 T cell
+G4YW_Th17,G4YW,Th17 cells,Th1/Th17 cells,Th1/Th17 cells,Central memory CD8 T cell
+G4YW_Th2,G4YW,Th2 cells,Th2 cells,Th2 cells,Central memory CD8 T cell
+G4YW_CD4_naive,G4YW,Naive CD4 T cells,Naive CD4 T cells,Naive CD4 T cells,Central memory CD8 T cell
+G4YW_Progenitor,G4YW,Progenitor cells,Progenitor cells,Progenitor cells,Central memory CD8 T cell
+G4YW_B_naive,G4YW,Naive B cells,Naive B cells,Non-switched memory B cells,Central memory CD8 T cell
+G4YW_B_NSM,G4YW,Non-switched memory B cells,Non-switched memory B cells,Non-switched memory B cells,Central memory CD8 T cell
+G4YW_B_Ex,G4YW,Exhausted B cells,Exhausted B cells,Switched memory B cells,Central memory CD8 T cell
+G4YW_B_SM,G4YW,Switched memory B cells,Switched memory B cells,Exhausted B cells,Central memory CD8 T cell
+G4YW_Plasmablasts,G4YW,Plasmablasts,Plasmablasts,Plasmablasts,Central memory CD8 T cell
+G4YW_C_mono,G4YW,Classical monocytes,Classical monocytes,Intermediate monocytes,Central memory CD8 T cell
+G4YW_I_mono,G4YW,Intermediate monocytes,Intermediate monocytes,Non classical monocytes,Central memory CD8 T cell
+G4YW_NC_mono,G4YW,Non classical monocytes,Non classical monocytes,Non classical monocytes,Central memory CD8 T cell
+G4YW_NK,G4YW,Natural killer cells,Natural killer cells,Natural killer cells,Central memory CD8 T cell
+G4YW_pDC,G4YW,Plasmacytoid dendritic cells,Plasmacytoid dendritic cells,Plasmacytoid dendritic cells,Central memory CD8 T cell
+G4YW_mDC,G4YW,Myeloid dendritic cells,Myeloid dendritic cells,Myeloid dendritic cells,Central memory CD8 T cell
+G4YW_Neutrophils,G4YW,Low-density neutrophils,Low-density neutrophils,Low-density neutrophils,Central memory CD8 T cell
+G4YW_Basophils,G4YW,Low-density basophils,Low-density basophils,Low-density basophils,Central memory CD8 T cell

@@ -1,0 +1,13 @@
+{
+  "status": "Written before the first performance analysis; local design plan, not external preregistration",
+  "source": "GEO GSE107011: deposited bulk RNA-seq TPM and sample metadata; no raw-read processing",
+  "seed": 20261022,
+  "principles": [
+    "No clinical or manufacturing claims",
+    "Document biological unit, assumptions and data provenance",
+    "Preserve unsuccessful as well as successful comparisons",
+    "No target-label feature selection outside training folds",
+    "Report finite-sample limitations and negative controls"
+  ],
+  "threads": 1
+}

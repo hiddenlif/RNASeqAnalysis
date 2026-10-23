@@ -1,0 +1,17 @@
+{
+  "GSE107011_series_matrix.txt.gz": {
+    "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE107nnn/GSE107011/matrix/GSE107011_series_matrix.txt.gz",
+    "sha256": "f4cd5850b51c4f3598c9d9eb9a14e8d7dafacd19da518c30f677b9dd7aa4e589",
+    "bytes": 8272
+  },
+  "GSE107011_TPM.txt.gz": {
+    "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE107nnn/GSE107011/suppl/GSE107011_Processed_data_TPM.txt.gz",
+    "sha256": "8c4abbdd4a118a051e7ef8ef4858568a3e67e60135733b06dab80b430efc1eb9",
+    "bytes": 15420393
+  },
+  "paper.medline": {
+    "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=30726743&rettype=medline&retmode=text",
+    "sha256": "9130e0fca044b923de8078ea60779f1a4aa0820cec0e702f8f8e98d5cfcaae9a",
+    "bytes": 6216
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "dataset": "GSE107011",
+  "source_samples": 127,
+  "source_genes": 58311,
+  "source_donors": 13,
+  "included_samples": 112,
+  "included_donors": 4,
+  "included_cell_types": 28,
+  "excluded_samples": [
+    {
+      "sample_id": "925L_CD4_TE",
+      "cell_type": "Terminal effector CD4 T cells"
+    },
+    {
+      "sample_id": "9JD4_CD4_TE",
+      "cell_type": "Terminal effector CD4 T cells"
+    },
+    {
+      "sample_id": "CYFZ_PBMC",
+      "cell_type": "PBMCs"
+    },
+    {
+      "sample_id": "FY2H_PBMC",
+      "cell_type": "PBMCs"
+    },
+    {
+      "sample_id": "FLWA_PBMC",
+      "cell_type": "PBMCs"
+    },
+    {
+      "sample_id": "453W_PBMC",
+      "cell_type": "PBMCs"
+    },
+    {
+      "sample_id": "684C_PBMC",
+      "cell_type": "PBMCs"
+    },
+    {
+      "sample_id": "CZJE_PBMC",
+      "cell_type": "PBMCs"
+    },
+    {
+      "sample_id": "DZQV_PBMC",
+      "cell_type": "PBMCs"
+    },
+    {
+      "sample_id": "925L_PBMC",
+      "cell_type": "PBMCs"
+    },
+    {
+      "sample_id": "9JD4_PBMC",
+      "cell_type": "PBMCs"
+    },
+    {
+      "sample_id": "G4YW_PBMC",
+      "cell_type": "PBMCs"
+    },
+    {
+      "sample_id": "4DUY_PBMC",
+      "cell_type": "PBMCs"
+    },
+    {
+      "sample_id": "36TS_PBMC",
+      "cell_type": "PBMCs"
+    },
+    {
+      "sample_id": "CR3L_PBMC",
+      "cell_type": "PBMCs"
+    }
+  ],
+  "donor_holdout_accuracy": 0.9285714285714286,
+  "donor_holdout_macro_f1": 0.9237889095031954,
+  "dummy_accuracy": 0.03571428571428571,
+  "sample_split_accuracy": 0.6785714285714286,
+  "grouped_fold_scores": [
+    {
+      "fold": 0,
+      "n_train": 84,
+      "n_test": 28,
+      "overlapping_donors": 0,
+      "accuracy": 0.9285714285714286,
+      "macro_f1": 0.9166666666666667
+    },
+    {
+      "fold": 1,
+      "n_train": 84,
+      "n_test": 28,
+      "overlapping_donors": 0,
+      "accuracy": 0.8928571428571429,
+      "macro_f1": 0.869047619047619
+    },
+    {
+      "fold": 2,
+      "n_train": 84,
+      "n_test": 28,
+      "overlapping_donors": 0,
+      "accuracy": 0.9285714285714286,
+      "macro_f1": 0.9047619047619048
+    },
+    {
+      "fold": 3,
+      "n_train": 84,
+      "n_test": 28,
+      "overlapping_donors": 0,
+      "accuracy": 0.9642857142857143,
+      "macro_f1": 0.9523809523809524
+    }
+  ],
+  "sample_split_fold_scores": [
+    {
+      "fold": 0,
+      "n_train": 74,
+      "n_test": 38,
+      "overlapping_donors": 4,
+      "accuracy": 0.5526315789473685,
+      "macro_f1": 0.5535714285714285
+    },
+    {
+      "fold": 1,
+      "n_train": 75,
+      "n_test": 37,
+      "overlapping_donors": 4,
+      "accuracy": 0.8108108108108109,
+      "macro_f1": 0.8154761904761905
+    },
+    {
+      "fold": 2,
+      "n_train": 75,
+      "n_test": 37,
+      "overlapping_donors": 4,
+      "accuracy": 0.6756756756756757,
+      "macro_f1": 0.6392857142857142
+    }
+  ],
+  "paired_contrast_donors": 4,
+  "minimum_attainable_two_sided_exact_p": 0.125,
+  "BH_q_below_005": 0,
+  "scope": "Deposited bulk TPM, healthy sorted cells, four development donors. Not single-cell RNA-seq, not raw-read QC, no independent external cohort or clinical validation.",
+  "source_sha256": {
+    "GSE107011_series_matrix.txt.gz": "f4cd5850b51c4f3598c9d9eb9a14e8d7dafacd19da518c30f677b9dd7aa4e589",
+    "GSE107011_TPM.txt.gz": "8c4abbdd4a118a051e7ef8ef4858568a3e67e60135733b06dab80b430efc1eb9",
+    "paper.medline": "9130e0fca044b923de8078ea60779f1a4aa0820cec0e702f8f8e98d5cfcaae9a"
+  }
+}

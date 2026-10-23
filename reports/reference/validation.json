@@ -1,0 +1,13 @@
+{
+  "pytest": {
+    "tests": 20,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "requirements_sha256": "4baadedf21602e8df012007715afadde087c165ccc05d91e853f328ae0d2bfb2",
+  "python": "3.13.15",
+  "notebook": "executed without cell errors",
+  "summary_sha256": "0aa8aefa6d8fd28c17069866649d4b52d1ff0b145f755e5f61771fc887723d40",
+  "analysis_sha256": "5576468f28bf2925baf5fc7fc8bd24f03c1e5835e6bf5d10f27e2ca483023127"
+}

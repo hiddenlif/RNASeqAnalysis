@@ -16,14 +16,15 @@ A complete, auditable secondary analysis of public bulk RNA-seq data from GEO GS
 4. Apply log2(TPM+1). Fit variance filtering, feature selection, scaling and logistic regression within each held-out-donor training fold.
 5. Save sample predictions, fold assignments, per-fold scores, a dummy baseline, exploratory PCA and a confusion matrix.
 6. Compare NK and naive B expression within four donors. Enumerate all 16 paired sign flips, correct across genes with Benjamini-Hochberg, and report effect sizes separately from statistical discoveries.
+7. Repeat the donor-held-out evaluation 20 times with shuffled cell-type labels as a negative control, and compare it with a deliberately leaky pipeline that selects features on all samples before the split.
 
 ## Results
 
-The source matrix contains 127 samples and 58,311 gene IDs. Metadata filtering retains 112 samples, 28 immune-cell types and four donors. Out-of-donor accuracy is 0.92857, macro F1 is 0.92379 and dummy accuracy is 0.03571. Fold accuracies range from 0.89286 to 0.96429. The separate three-fold random-sample comparator scores 0.67857. The exact two-sided paired p-value floor is 0.125; no gene has BH q < 0.05.
+The source matrix contains 127 samples and 58,311 gene IDs. Metadata filtering retains 112 samples, 28 immune-cell types and four donors. Out-of-donor accuracy is 0.92857, macro F1 is 0.92379 and dummy accuracy is 0.03571. Fold accuracies range from 0.89286 to 0.96429. The separate three-fold random-sample comparator scores 0.67857. The exact two-sided paired p-value floor is 0.125; no gene has BH q < 0.05. Negative control: with the cell-type labels shuffled 20 times (class counts kept), the in-fold pipeline reaches a mean donor-held-out accuracy of 0.01071 (maximum 0.03571; chance is 0.03571). Choosing the 300 features on all samples before holding donors out, with the same shuffled labels, reaches a mean of 0.57098 (maximum 0.69643), which is the leak the in-fold design avoids.
 
 ## What the tests protect
 
-Known-value and independent SciPy BH checks, independently enumerated paired p-values, zero differences, sign symmetry, bounded enumeration, invalid/empty inputs, shuffled ID alignment, duplicate/missing/negative/nonfinite expression and live source metadata identity.
+Known-value and independent SciPy BH checks, independently enumerated paired p-values, zero differences, sign symmetry, bounded enumeration, invalid/empty inputs, shuffled ID alignment, duplicate/missing/negative/nonfinite expression and live source metadata identity. Offline suites on synthetic matrices also check that donor holdout never shares a donor and scores every sample once, that a leaking splitter is rejected, that real signal is recovered and the dummy baseline stays at the class prior, that shuffled labels fall to chance in-fold but not when selection comes first, that the permutation control is reproducible, metadata parsing and its rejections, and Benjamini-Hochberg and the exact paired test against independent formulations on random designs (the leakage guard is checked by disabling it).
 
 ## Libraries actually used
 

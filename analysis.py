@@ -175,6 +175,35 @@ def evaluate(x, y, groups, splitter, grouped):
     return pred, baseline, records, folds
 
 
+def selection_outside_folds_accuracy(x, y, groups, k=300):
+    """Deliberately wrong comparison: choose the k features on ALL samples, then hold donors out. Leaks labels into selection."""
+    chosen = make_pipeline(VarianceThreshold(0.01), SelectKBest(f_classif, k=k)).fit(x, y).transform(x)
+    pred = np.empty(len(y), dtype=object)
+    for tr, te in LeaveOneGroupOut().split(chosen, y, groups):
+        model = make_pipeline(StandardScaler(), LogisticRegression(C=0.1, max_iter=2500, solver="lbfgs"))
+        pred[te] = model.fit(chosen[tr], y[tr]).predict(chosen[te])
+    return float(accuracy_score(y, pred))
+
+
+def permutation_control(x, y, groups, seeds=range(20)):
+    """Negative control: shuffle the cell-type labels (class counts kept) and repeat the donor-held-out evaluation.
+
+    The in-fold pipeline should fall to chance. Selecting features on all samples first should not, because the shuffled
+    labels have already shaped the features that are kept."""
+    rows = []
+    for seed in seeds:
+        shuffled = np.random.default_rng(20261022 + seed).permutation(y)
+        pred, _, _, _ = evaluate(x, shuffled, groups, LeaveOneGroupOut(), True)
+        rows.append(
+            {
+                "seed": int(seed),
+                "in_fold_accuracy": float(accuracy_score(shuffled, pred)),
+                "selection_outside_folds_accuracy": selection_outside_folds_accuracy(x, shuffled, groups),
+            }
+        )
+    return pd.DataFrame(rows)
+
+
 def run(output=ROOT / "artifacts/run"):
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
@@ -206,6 +235,23 @@ def run(output=ROOT / "artifacts/run"):
     p_random, _, random_folds, _ = evaluate(
         x, y, groups, StratifiedKFold(3, shuffle=True, random_state=20261022), False
     )
+    control = permutation_control(x, y, groups)
+    control.to_csv(output / "permutation_control.csv", index=False)
+    chance = 1 / len(set(y))
+    fig, ax = plt.subplots(figsize=(7, 5))
+    sns.stripplot(
+        data=control.melt(id_vars="seed", var_name="pipeline", value_name="accuracy").replace(
+            {"in_fold_accuracy": "Selection inside each training fold", "selection_outside_folds_accuracy": "Selection on all samples first"}
+        ),
+        x="pipeline", y="accuracy", ax=ax, size=7, color="#2b8cbe",
+    )
+    ax.axhline(chance, color="black", ls="--", label=f"Chance for {len(set(y))} balanced classes")
+    ax.set(ylim=(0, max(0.5, float(control.max(numeric_only=True).max()) + 0.05)), xlabel="", ylabel="Donor-held-out accuracy, shuffled labels",
+           title="Negative control: 20 label shuffles")
+    ax.legend(fontsize=8)
+    fig.tight_layout()
+    fig.savefig(output / "permutation_control.png", dpi=160)
+    plt.close(fig)
     pd.DataFrame(folds).to_csv(output / "donor_holdout_scores.csv", index=False)
     pd.DataFrame(assign).to_csv(output / "fold_assignments.csv", index=False)
     pd.DataFrame(
@@ -338,6 +384,15 @@ def run(output=ROOT / "artifacts/run"):
         "donor_holdout_macro_f1": f1_score(y, pred, average="macro", zero_division=0),
         "dummy_accuracy": accuracy_score(y, dummy),
         "sample_split_accuracy": accuracy_score(y, p_random),
+        "permutation_control": {
+            "shuffles": len(control),
+            "chance_accuracy": chance,
+            "in_fold_mean_accuracy": float(control.in_fold_accuracy.mean()),
+            "in_fold_max_accuracy": float(control.in_fold_accuracy.max()),
+            "selection_outside_folds_mean_accuracy": float(control.selection_outside_folds_accuracy.mean()),
+            "selection_outside_folds_max_accuracy": float(control.selection_outside_folds_accuracy.max()),
+            "reading": "Shuffled labels carry no signal. Accuracy near chance is the expected result of a leak-free pipeline; accuracy well above chance after selecting features on all samples shows the leak the in-fold design avoids.",
+        },
         "grouped_fold_scores": folds,
         "sample_split_fold_scores": random_folds,
         "paired_contrast_donors": len(donors),

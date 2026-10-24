@@ -72,6 +72,15 @@
   "donor_holdout_macro_f1": 0.9237889095031954,
   "dummy_accuracy": 0.03571428571428571,
   "sample_split_accuracy": 0.6785714285714286,
+  "permutation_control": {
+    "shuffles": 20,
+    "chance_accuracy": 0.03571428571428571,
+    "in_fold_mean_accuracy": 0.010714285714285713,
+    "in_fold_max_accuracy": 0.03571428571428571,
+    "selection_outside_folds_mean_accuracy": 0.5709821428571429,
+    "selection_outside_folds_max_accuracy": 0.6964285714285714,
+    "reading": "Shuffled labels carry no signal. Accuracy near chance is the expected result of a leak-free pipeline; accuracy well above chance after selecting features on all samples shows the leak the in-fold design avoids."
+  },
   "grouped_fold_scores": [
     {
       "fold": 0,

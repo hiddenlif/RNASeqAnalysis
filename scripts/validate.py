@@ -1,5 +1,10 @@
+import hashlib
+import json
+import os
+import platform
+import subprocess
+import sys
 from pathlib import Path
-import sys, subprocess, json, os, hashlib, platform
 
 root = Path(__file__).resolve().parents[1]
 os.chdir(root)
@@ -16,8 +21,8 @@ subprocess.run(
     check=True,
 )
 subprocess.run([sys.executable, "analysis.py"], check=True)
-from nbclient import NotebookClient
 import nbformat
+from nbclient import NotebookClient
 
 nb = nbformat.read(root / "notebooks/analysis.ipynb", as_version=4)
 NotebookClient(

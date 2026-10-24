@@ -1,24 +1,30 @@
 """Retrospective analysis of deposited bulk RNA-seq TPM, not a clinical model."""
 
+import csv
+import gzip
+import hashlib
+import itertools
+import json
+import re
+import urllib.request
 from pathlib import Path
-import csv, gzip, hashlib, itertools, json, platform, re, urllib.request
+
+import matplotlib
 import numpy as np
 import pandas as pd
-from scipy import stats
-import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.pipeline import make_pipeline
-from sklearn.feature_selection import VarianceThreshold, SelectKBest, f_classif
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import LeaveOneGroupOut, StratifiedKFold
-from sklearn.metrics import accuracy_score, f1_score, confusion_matrix
-from sklearn.dummy import DummyClassifier
-from sklearn.decomposition import PCA
 from Bio import Medline
+from sklearn.decomposition import PCA
+from sklearn.dummy import DummyClassifier
+from sklearn.feature_selection import SelectKBest, VarianceThreshold, f_classif
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, confusion_matrix, f1_score
+from sklearn.model_selection import LeaveOneGroupOut, StratifiedKFold
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
 
 ROOT = Path(__file__).parent
 SOURCES = {
@@ -177,10 +183,16 @@ def evaluate(x, y, groups, splitter, grouped):
 
 def selection_outside_folds_accuracy(x, y, groups, k=300):
     """Deliberately wrong comparison: choose the k features on ALL samples, then hold donors out. Leaks labels into selection."""
-    chosen = make_pipeline(VarianceThreshold(0.01), SelectKBest(f_classif, k=k)).fit(x, y).transform(x)
+    chosen = (
+        make_pipeline(VarianceThreshold(0.01), SelectKBest(f_classif, k=k))
+        .fit(x, y)
+        .transform(x)
+    )
     pred = np.empty(len(y), dtype=object)
     for tr, te in LeaveOneGroupOut().split(chosen, y, groups):
-        model = make_pipeline(StandardScaler(), LogisticRegression(C=0.1, max_iter=2500, solver="lbfgs"))
+        model = make_pipeline(
+            StandardScaler(), LogisticRegression(C=0.1, max_iter=2500, solver="lbfgs")
+        )
         pred[te] = model.fit(chosen[tr], y[tr]).predict(chosen[te])
     return float(accuracy_score(y, pred))
 
@@ -198,7 +210,9 @@ def permutation_control(x, y, groups, seeds=range(20)):
             {
                 "seed": int(seed),
                 "in_fold_accuracy": float(accuracy_score(shuffled, pred)),
-                "selection_outside_folds_accuracy": selection_outside_folds_accuracy(x, shuffled, groups),
+                "selection_outside_folds_accuracy": selection_outside_folds_accuracy(
+                    x, shuffled, groups
+                ),
             }
         )
     return pd.DataFrame(rows)
@@ -240,14 +254,32 @@ def run(output=ROOT / "artifacts/run"):
     chance = 1 / len(set(y))
     fig, ax = plt.subplots(figsize=(7, 5))
     sns.stripplot(
-        data=control.melt(id_vars="seed", var_name="pipeline", value_name="accuracy").replace(
-            {"in_fold_accuracy": "Selection inside each training fold", "selection_outside_folds_accuracy": "Selection on all samples first"}
+        data=control.melt(
+            id_vars="seed", var_name="pipeline", value_name="accuracy"
+        ).replace(
+            {
+                "in_fold_accuracy": "Selection inside each training fold",
+                "selection_outside_folds_accuracy": "Selection on all samples first",
+            }
         ),
-        x="pipeline", y="accuracy", ax=ax, size=7, color="#2b8cbe",
+        x="pipeline",
+        y="accuracy",
+        ax=ax,
+        size=7,
+        color="#2b8cbe",
     )
-    ax.axhline(chance, color="black", ls="--", label=f"Chance for {len(set(y))} balanced classes")
-    ax.set(ylim=(0, max(0.5, float(control.max(numeric_only=True).max()) + 0.05)), xlabel="", ylabel="Donor-held-out accuracy, shuffled labels",
-           title="Negative control: 20 label shuffles")
+    ax.axhline(
+        chance,
+        color="black",
+        ls="--",
+        label=f"Chance for {len(set(y))} balanced classes",
+    )
+    ax.set(
+        ylim=(0, max(0.5, float(control.max(numeric_only=True).max()) + 0.05)),
+        xlabel="",
+        ylabel="Donor-held-out accuracy, shuffled labels",
+        title="Negative control: 20 label shuffles",
+    )
     ax.legend(fontsize=8)
     fig.tight_layout()
     fig.savefig(output / "permutation_control.png", dpi=160)
@@ -291,7 +323,9 @@ def run(output=ROOT / "artifacts/run"):
                     else (
                         "Monocyte"
                         if "monocyte" in t.lower()
-                        else "Dendritic" if "dendritic" in t else "Other"
+                        else "Dendritic"
+                        if "dendritic" in t
+                        else "Other"
                     )
                 )
             )
@@ -389,8 +423,12 @@ def run(output=ROOT / "artifacts/run"):
             "chance_accuracy": chance,
             "in_fold_mean_accuracy": float(control.in_fold_accuracy.mean()),
             "in_fold_max_accuracy": float(control.in_fold_accuracy.max()),
-            "selection_outside_folds_mean_accuracy": float(control.selection_outside_folds_accuracy.mean()),
-            "selection_outside_folds_max_accuracy": float(control.selection_outside_folds_accuracy.max()),
+            "selection_outside_folds_mean_accuracy": float(
+                control.selection_outside_folds_accuracy.mean()
+            ),
+            "selection_outside_folds_max_accuracy": float(
+                control.selection_outside_folds_accuracy.max()
+            ),
             "reading": "Shuffled labels carry no signal. Accuracy near chance is the expected result of a leak-free pipeline; accuracy well above chance after selecting features on all samples shows the leak the in-fold design avoids.",
         },
         "grouped_fold_scores": folds,

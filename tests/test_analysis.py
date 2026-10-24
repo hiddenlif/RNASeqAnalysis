@@ -1,9 +1,11 @@
 import itertools
+
 import numpy as np
 import pandas as pd
 import pytest
 from scipy import stats
-from analysis import bh, exact_paired_p, metadata, validate_expression, ROOT
+
+from analysis import ROOT, bh, exact_paired_p, metadata, validate_expression
 
 
 def test_bh_known():

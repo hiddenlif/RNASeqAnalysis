@@ -1,4 +1,4 @@
-# RNA-seq analysis
+# RNA-seq Analysis: Donor-Held-Out Classification and Inference
 
 A complete, auditable secondary analysis of public bulk RNA-seq data from GEO GSE107011.
 
@@ -53,7 +53,7 @@ docker build -t rnaseq-analysis:local .
 docker run --rm --cpus=1 --memory=3g rnaseq-analysis:local
 ```
 
-The container runs as an unprivileged user. GitHub Actions uses the same Python validation entrypoint. Public-data downloads require network access; the other projects are offline after dependency installation.
+The container runs as an unprivileged user. GitHub Actions uses the same Python validation entrypoint. Initial public-data downloads require network access.
 
 ## Navigate
 
